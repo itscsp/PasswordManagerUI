@@ -6,6 +6,7 @@ import RootLayout from './pages/RootLayout'
 import PasswordList from './pages/PasswordList'
 import PasswordDetailPage from './pages/PasswordDetailPage'
 import EditPassword from './pages/EditPassword'
+import AddPassowrd from './pages/AddPassword'
 
 const router = createBrowserRouter([
   {
@@ -21,10 +22,19 @@ const router = createBrowserRouter([
         path:'/password',
         element: <PasswordList />,
       }, 
+     
+      {
+        path:'/password/add',
+        element: <AddPassowrd />  
+      },
       {
         path:'/password/:pswdId',
         element: <PasswordDetailPage />  
-      }
+      },
+      {
+        path:'/password/:pswdId/edit',
+        element: <EditPassword />  
+      },
     ]
   }
 ])

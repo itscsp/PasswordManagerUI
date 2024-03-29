@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom"
 const RootLayout = () => {
     return (
         <>
-            <main>
+            <main className="my-5">
             <Outlet />
             </main>
         </>
