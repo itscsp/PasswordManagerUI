@@ -1,0 +1,8 @@
+.passwordItem:last-child .password-content-wrapper{
+    border-bottom: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+ font-size: 12px;
+}
