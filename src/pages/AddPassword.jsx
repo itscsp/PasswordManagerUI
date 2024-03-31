@@ -27,23 +27,23 @@ const AddPassowrd = () => {
             <Card>
                 <Form method="post" action="/add-password">
                     <div className="p-5 pb-2">
-                        <label htmlFor="website" className="block text-xs font-bold text-black-600">Website:</label>
-                        <input type="text" id="website" placeholder="example.com" required name="website" className="mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus-visible:border-gray-500" />
+                        <label htmlFor="website" className="block text-xs font-bold text-gray-700">Website:</label>
+                        <input type="text" id="website" placeholder="example.com" required name="website" className="bg-slate-100 hover:bg-slate-200 mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md focus:ring-0 focus:border-b focus:border-gray-500  focus:outline-none focus-visible:border-b focus-visible:border-gray-500" />
                     </div>
                     <div className="p-5 pb-2 pt-2">
-                        <label htmlFor="username" className="block text-xs font-bold text-black-600">Username:</label>
-                        <input type="text" id="username"  required name="username" className="mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus-visible:border-gray-500" />
+                        <label htmlFor="username" className="block text-xs font-bold text-gray-700">Username:</label>
+                        <input type="text" id="username"  required name="username" className="bg-slate-100 hover:bg-slate-200 mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus-visible:border-gray-500 focus:outline-none" />
                     </div>
                     <div className="p-5 pb-2 pt-2 relative">
-                        <label htmlFor="password" className="block text-xs font-bold text-black-600">Password:</label>
-                        <input type={showPassword ? "text" : "password"} id="password"  required name="password" className="mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md pr-10 focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus-visible:border-gray-500" />
+                        <label htmlFor="password" className="block text-xs font-bold text-gray-700">Password:</label>
+                        <input type={showPassword ? "text" : "password"} id="password"  required name="password" className="bg-slate-100 hover:bg-slate-200 mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md pr-10 focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus:outline-none focus-visible:border-gray-500" />
                         <button type="button" id="togglePassword" className="focus:outline-none -ml-8" onClick={togglePasswordVisibility}>
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </button>
                     </div>
                     <div className="p-5 pb-2 pt-2">
-                        <label htmlFor="note" className="block text-xs font-bold text-black-600">Note:</label>
-                        <textarea id="note"  name="note" className="mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus-visible:border-gray-500"></textarea>
+                        <label htmlFor="note" className="block text-xs font-bold text-gray-700">Note:</label>
+                        <textarea id="note"  name="note" className="bg-slate-100 hover:bg-slate-200 mt-1 p-2 w-full border-b rounded-tl-md rounded-tr-md focus:ring-0 focus:border-b focus:border-gray-500 focus-visible:border-b focus-visible:border-gray-500 focus:outline-none"></textarea>
                     </div>
                     <div className="p-5 flex justify-end space-x-2">
                         <Button isLink='true' type="button" to='/password/' className="border hover:bg-gray-100 text-gray py-2 px-4 rounded">Cancel</Button>
