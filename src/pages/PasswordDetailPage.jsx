@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useParams, useNavigate  } from "react-router-dom"; 
 import password from "../data";
 import DynamicFavicon from "../components/Favicon";
 import { BsArrowLeftCircle } from "react-icons/bs";
@@ -10,12 +10,14 @@ import { VscCopy, VscEye, VscEyeClosed } from "react-icons/vsc";
 
 const PasswordDetailPage = () => {
     const prdId = useParams();
+    const navigate = useNavigate();
     const passwordDetails = password.filter((pswd) => pswd.id === prdId.pswdId);
     const inputUserNameRef = useRef(null);
     const inputPasswordRef = useRef(null);
 
     const [showFullContent, setShowFullContent] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [redirect, setRedirect] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
@@ -33,6 +35,51 @@ const PasswordDetailPage = () => {
         // For example, by displaying a tooltip or a message
         alert(`${item} copied to clipboard`);
     };
+
+    // Function to handle the delete operation
+    const handleDelete = () => {
+        // Perform the delete operation here
+        // For example, you can update state to trigger a re-render, or make an API call to delete data
+        console.log('Delete button clicked!');
+    }
+
+    // Timeout ID
+    let timeoutId;
+
+    // Function to start the timer
+    const startTimer = () => {
+        timeoutId = setTimeout(() => {
+            // Redirect the user after 1 minute of inactivity
+            setRedirect(true);
+        }, 300000); // 1 minute in milliseconds
+    };
+
+    const handleActivity = () => {
+        // Reset the timer when there's user activity
+        clearTimeout(timeoutId);
+        startTimer();
+    };
+
+    useEffect(() => {
+        // Start the timer when the component mounts
+        startTimer();
+
+        // Event listener for user activity
+        window.addEventListener('mousemove', handleActivity);
+
+        // Clear timeout and remove event listener when the component unmounts or changes
+        return () => {
+            clearTimeout(timeoutId);
+            window.removeEventListener('mousemove', handleActivity);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (redirect) {
+            // Redirect to the password list page
+            navigate('/password');
+        }
+    }, [redirect]);
 
     return (
         <>
@@ -121,7 +168,7 @@ const PasswordDetailPage = () => {
                         </div >
                         <div className="p-3 mt-3 border-t-2 flex gap-3 ">
                             <Button isLink={true} to={`/password/${item.id}/edit`} className="bg-violet-500 hover:bg-violet-700 text-white  py-2 px-4 rounded inline-block">Edit</Button>
-                            <Button isLink={true} to={`/password/${item.id}/edit`} className="bg-red-500 hover:bg-red-700 text-white  py-2 px-4 rounded inline-block">Delete</Button>
+                            <Button onClick={handleDelete} className="bg-red-500 hover:bg-red-700 text-white  py-2 px-4 rounded inline-block">Delete</Button>
                         </div>
                     </Card >
                 </div >
